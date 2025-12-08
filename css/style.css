@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "VT323", monospace;;
+  background: #e5fcfe;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 70px;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+#grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.cell {
+  width: 60px;
+  height: 60px;
+  border: 2px solid lightgray;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.row.active .cell {
+  border-color:black;
+}
+
+.correct {     
+  background: greenyellow;
+  border-color: greenyellow;
+  color: white;
+}
+
+.present {      
+  background: yellow;
+  border-color: yellow;
+  color: white;
+}
+
+.absent {     
+  background: grey;
+  border-color: grey;
+  color: white;
+}
