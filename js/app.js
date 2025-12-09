@@ -1,18 +1,94 @@
 /*-------------------------------- Constants --------------------------------*/
-
+const maxDigits = 5;
+const correctClass = "correct";
+const presentClass = "present";
+const absentClass = "absent";
 
 
 /*---------------------------- Variables (state) ----------------------------*/
-
+let secretNum = "";
+let currentGuess = "";
+let attempts = [];
+let attemptCount = 0;
+let activeRow = 0;
+let gameOver = false;
+let canType = true;
+let secretCopy = "";
+let feedbackArray = [];
 
 
 /*------------------------ Cached Element References ------------------------*/
-
-
-
-/*-------------------------------- Functions --------------------------------*/
-
+const gridEl = document.querySelector('#grid')
+const rowsEl = document.querySelectorAll('.row')
+const cellsEl = document.querySelectorAll('.cell')
+const playAgainBtn = document.querySelector('#message')
+const messageEl = document.querySelector('#play-again')
 
 
 /*----------------------------- Event Listeners -----------------------------*/
+document.addEventListener("keydown", handleKeydown);
+playAgainBtn.addEventListener("click", handlePlayAgain);
+
+
+/*-------------------------------- Functions --------------------------------*/
+function generateSecretNum() {
+
+}
+
+function resetUI() {
+
+}
+
+function updateMessage(text) {
+
+}
+
+
+function startGame() {
+
+}
+
+function handleDigit(digit) {
+
+}
+
+function handleDelete() {
+
+}
+
+function handleKeydown(event) {
+
+}
+
+function handleSubmit() {
+
+}
+
+function checkGuess(guess) {
+
+}
+
+function renderFeedback(feedbackArray) {
+
+}
+
+function advanceRow() {
+
+}
+
+function checkWinLose() {
+
+}
+
+function handleWin() {
+
+}
+
+function handleLoss() {
+
+}
+
+function handlePlayAgain() {
+
+}
 
