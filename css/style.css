@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: "VT323", monospace;;
+  font-family: "VT323", monospace;
   background: #e5fcfe;
   display: flex;
   flex-direction: column;
@@ -42,23 +42,46 @@ h1 {
 }
 
 .row.active .cell {
-  border-color:black;
+  border-color: black;
 }
 
-.correct {     
+.correct {
   background: greenyellow;
   border-color: greenyellow;
   color: white;
 }
 
-.present {      
+.present {
   background: yellow;
   border-color: yellow;
   color: white;
 }
 
-.absent {     
+.absent {
   background: grey;
   border-color: grey;
   color: white;
+}
+
+#message {
+  margin-top: 20px;
+  font-size: 25px;
+  height: 30px;
+  color: navy;
+  text-align: center;
+}
+
+#play-again {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-family: "VT323", monospace;
+  font-size: 20px;
+  border: 2px solid black;
+  background: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#play-again:hover {
+  background: lightblue;
 }
