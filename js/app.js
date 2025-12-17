@@ -32,7 +32,10 @@ playAgainBtn.addEventListener("click", handlePlayAgain);
 
 /*-------------------------------- Functions --------------------------------*/
 function generateSecretNum() {
-
+ for(let i= 0; i<maxDigits; i++){
+        secretNum= secretNum + Math.floor(Math.random()*10)
+    }
+    return secretNum
 }
 
 function resetUI() {
@@ -45,7 +48,7 @@ function updateMessage(text) {
 
 
 function startGame() {
-
+    if (gameOver = false)
 }
 
 function handleDigit(digit) {
@@ -91,4 +94,3 @@ function handleLoss() {
 function handlePlayAgain() {
 
 }
-
