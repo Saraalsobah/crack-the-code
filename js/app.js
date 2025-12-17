@@ -48,7 +48,14 @@ function updateMessage(text) {
 
 
 function startGame() {
-    if (gameOver = false)
+    gameOver = false;
+    canType = true;
+    currentGuess = "";
+    attemptCount = 0;
+    activeRow = 0;
+    feedbackArray = [];
+    resetUI();
+    secretNum = generateSecretNum();
 }
 
 function handleDigit(digit) {
