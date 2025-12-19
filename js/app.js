@@ -75,7 +75,11 @@ function handleDigit(digit) {
 }
 
 function handleDelete() {
-
+    let newNum = currentGuess.slice(0,(currentGuess.length - 1));
+    currentGuess = newNum;
+    const row = rowsEl[activeRow];
+    const cellIndex = currentGuess.length;
+    row.children[cellIndex].textContent = "";
 }
 
 function handleKeydown(event) {
