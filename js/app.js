@@ -39,7 +39,16 @@ function generateSecretNum() {
 }
 
 function resetUI() {
+    rowsEl.forEach((row) => {
+        row.classList.remove("active");
+    });
 
+    cellsEl.forEach((cell)=> {
+        cell.textContent= "";
+        cell.classList.remove(correctClass, presentClass, absentClass);
+    });
+   activeRow = 0; 
+   rowsEl[activeRow].classList.add("active");
 }
 
 function updateMessage(text) {
