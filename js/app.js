@@ -67,7 +67,11 @@ function startGame() {
 }
 
 function handleDigit(digit) {
-
+    if (gameOver || currentGuess.length >= maxDigits) return;
+    currentGuess = currentGuess + digit;
+    const row = rowsEl[activeRow];
+    const cellIndex = currentGuess.length - 1;
+    row.children[cellIndex].textContent = digit;
 }
 
 function handleDelete() {
