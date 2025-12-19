@@ -55,7 +55,6 @@ function updateMessage(text) {
 
 }
 
-
 function startGame() {
     gameOver = false;
     canType = true;
@@ -76,7 +75,17 @@ function handleDelete() {
 }
 
 function handleKeydown(event) {
+    if (gameOver) return;
 
+    if (event.key>= "0" && event.key <= "9"){
+        handleDigit(event.key);
+    }
+    else if (event.key === "Backspace"){
+        handleDelete()
+    }
+    else if (event.key === "Enter"){
+        handleSubmit()
+    }
 }
 
 function handleSubmit() {
