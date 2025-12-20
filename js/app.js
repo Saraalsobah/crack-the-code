@@ -110,7 +110,22 @@ function handleSubmit() {
 }
 
 function checkGuess(guess) {
-
+    secretCopy= secretNum.split("");
+    guessArr= guess.split("");
+    feedbackArray = [];
+    guessArr.forEach((digit,index) => {
+        if (secretCopy[index] === digit){
+            feedbackArray[index] = "correct";
+            secretCopy[index] = null;
+        }
+        if (secretCopy.includes(digit)){
+            feedbackArray[index] = "present";
+            secretCopy[secretCopy.indexOf(digit)] = null;
+        }
+        else {
+            feedbackArray[index] = "absent";
+        }     
+    })
 }
 
 function renderFeedback(feedbackArray) {
