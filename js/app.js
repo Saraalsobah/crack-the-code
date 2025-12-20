@@ -168,7 +168,10 @@ function handleWin() {
 }
 
 function handleLoss() {
-
+    gameOver = true;
+    canType = false;
+    updateMessage(`You lost! The number was ${secretNum}`);
+    playAgainBtn.style.display = "block";
 }
 
 function handlePlayAgain() {
