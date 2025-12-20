@@ -148,7 +148,15 @@ function advanceRow() {
 }
 
 function checkWinLose() {
-
+    if (feedbackArray.every(val => val === "correct")){
+        handleWin();
+        gameOver = true;
+        return;
+    }
+    if (attemptCount === rowsEl.length - 1){
+        handleLoss();
+        gameOver = true;
+    }
 }
 
 function handleWin() {
