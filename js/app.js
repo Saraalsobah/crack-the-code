@@ -99,11 +99,12 @@ function handleKeydown(event) {
 function handleSubmit() {
     if (currentGuess.length !== maxDigits) return;
     checkGuess(currentGuess)
-    renderFeedback()
+    renderFeedback(feedbackArray)
     checkWinLose()
     if (!gameOver){
         attempts.push(currentGuess);
         attemptCount ++;
+        currentGuess = "";
         activeRow ++;
         advanceRow();
     }
@@ -114,10 +115,13 @@ function checkGuess(guess) {
     guessArr= guess.split("");
     feedbackArray = [];
     guessArr.forEach((digit,index) => {
-        if (secretCopy[index] === digit){
+        if (digit === secretCopy[index]){
             feedbackArray[index] = "correct";
             secretCopy[index] = null;
         }
+    });
+    guessArr.forEach((digit,index) => {
+        if (feedbackArray[index] === "correct") return;
         if (secretCopy.includes(digit)){
             feedbackArray[index] = "present";
             secretCopy[secretCopy.indexOf(digit)] = null;
@@ -125,7 +129,8 @@ function checkGuess(guess) {
         else {
             feedbackArray[index] = "absent";
         }     
-    })
+    });
+    return feedbackArray;
 }
 
 function renderFeedback(feedbackArray) {
@@ -149,5 +154,5 @@ function handleLoss() {
 }
 
 function handlePlayAgain() {
-
+    startGame()
 }
