@@ -23,8 +23,8 @@ let guessArr = [];
 const gridEl = document.querySelector('#grid')
 const rowsEl = document.querySelectorAll('.row')
 const cellsEl = document.querySelectorAll('.cell')
-const playAgainBtn = document.querySelector('#message')
-const messageEl = document.querySelector('#play-again')
+const playAgainBtn = document.querySelector('#play-again')
+const messageEl = document.querySelector('#message')
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -145,7 +145,12 @@ function renderFeedback() {
 }
 
 function advanceRow() {
-
+    rowsEl.forEach((row) => {
+        row.classList.remove("active");
+    });
+    if (!gameOver && activeRow < rowsEl.length) {
+        rowsEl[activeRow].classList.add("active");
+    }
 }
 
 function checkWinLose() {
@@ -175,6 +180,7 @@ function handleLoss() {
 }
 
 function handlePlayAgain() {
-    resetUI()
-    startGame()
+    messageEl.style.display = "none";
+    playAgainBtn.style.display = "none";
+    startGame();
 }
