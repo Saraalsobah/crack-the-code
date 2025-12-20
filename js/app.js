@@ -15,6 +15,8 @@ let gameOver = false;
 let canType = true;
 let secretCopy = "";
 let feedbackArray = [];
+let guessArr = [];
+
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -32,8 +34,9 @@ playAgainBtn.addEventListener("click", handlePlayAgain);
 
 /*-------------------------------- Functions --------------------------------*/
 function generateSecretNum() {
- for(let i= 0; i<maxDigits; i++){
-        secretNum= secretNum + Math.floor(Math.random()*10)
+    secretNum = "";
+    for (let i = 0; i < maxDigits; i++) {
+        secretNum = secretNum + Math.floor(Math.random() * 10)
     }
     return secretNum
 }
@@ -99,7 +102,7 @@ function handleKeydown(event) {
 function handleSubmit() {
     if (currentGuess.length !== maxDigits) return;
     checkGuess(currentGuess)
-    renderFeedback(feedbackArray)
+    renderFeedback()
     checkWinLose()
     if (!gameOver){
         attempts.push(currentGuess);
@@ -133,8 +136,11 @@ function checkGuess(guess) {
     return feedbackArray;
 }
 
-function renderFeedback(feedbackArray) {
-
+function renderFeedback() {
+    const row = rowsEl[activeRow];
+    feedbackArray.forEach((feedback, index) => {
+        row.children[index].classList.add(feedback);
+    });
 }
 
 function advanceRow() {
