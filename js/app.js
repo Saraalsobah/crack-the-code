@@ -97,7 +97,16 @@ function handleKeydown(event) {
 }
 
 function handleSubmit() {
-
+    if (currentGuess.length !== maxDigits) return;
+    checkGuess(currentGuess)
+    renderFeedback()
+    checkWinLose()
+    if (!gameOver){
+        attempts.push(currentGuess);
+        attemptCount ++;
+        activeRow ++;
+        advanceRow();
+    }
 }
 
 function checkGuess(guess) {
