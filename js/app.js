@@ -55,7 +55,8 @@ function resetUI() {
 }
 
 function updateMessage(text) {
-
+    messageEl.textContent = text;
+    messageEl.style.display = "block";
 }
 
 function startGame() {
@@ -160,7 +161,10 @@ function checkWinLose() {
 }
 
 function handleWin() {
-
+    gameOver = true;
+    canType = false;
+    updateMessage("Congratulations! You won!");
+    playAgainBtn.style.display = "block";
 }
 
 function handleLoss() {
@@ -168,5 +172,6 @@ function handleLoss() {
 }
 
 function handlePlayAgain() {
+    resetUI()
     startGame()
 }
