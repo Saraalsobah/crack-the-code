@@ -67,6 +67,7 @@ function startGame() {
     attemptCount = 0;
     activeRow = 0;
     feedbackArray = [];
+    document.body.classList.remove("win", "lose");
     resetUI();
     secretNum = generateSecretNum();
 }
@@ -77,6 +78,11 @@ function handleDigit(digit) {
     const row = rowsEl[activeRow];
     const cellIndex = currentGuess.length - 1;
     row.children[cellIndex].textContent = digit;
+    row.children[cellIndex].classList.add("pop");
+    setTimeout(() => {
+        row.children[cellIndex].classList.remove("pop");
+    }, 150);
+
 }
 
 function handleDelete() {
@@ -104,12 +110,18 @@ function handleKeydown(event) {
 }
 
 function handleSubmit() {
-    if (gameOver || currentGuess.length !== maxDigits) return;
+    if (gameOver || currentGuess.length !== maxDigits) {
+        rowsEl[activeRow].classList.add("shake");
+        setTimeout(() => {
+            rowsEl[activeRow].classList.remove("shake");
+        }, 400);
+        return;
+    }
     checkGuess(currentGuess);
     renderFeedback();
-    checkWinLose();
     attempts.push(currentGuess);
     attemptCount++;
+    checkWinLose();
 
     if (!gameOver) {
         currentGuess = "";
@@ -172,6 +184,7 @@ function handleWin() {
     canType = false;
     updateMessage(`You cracked the code in ${attemptCount} attempts!`);
     playAgainBtn.style.display = "block";
+    document.body.classList.add("win");
 }
 
 function handleLoss() {
@@ -179,6 +192,7 @@ function handleLoss() {
     canType = false;
     updateMessage(`You lost! The number was ${secretNum}`);
     playAgainBtn.style.display = "block";
+    document.body.classList.add("lose");
 }
 
 function handlePlayAgain() {
