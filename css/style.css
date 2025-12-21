@@ -6,14 +6,35 @@
 
 body {
   font-family: "VT323", monospace;
-  background: #e5fcfe;
+  background: #FBF4EB;
+  color: #c43670;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 70px;
 }
 
+body.win {
+  animation: winPulse 1s infinite alternate;
+}
+
+@keyframes winPulse {
+  from { background-color: #FBF4EB; }
+  to { background-color: #FBD9E5; }
+}
+
+body.lose {
+  animation: loseFade 0.8s;
+}
+
+@keyframes loseFade {
+  from { opacity: 1; }
+  to { opacity: 0.85; }
+}
+
+
 h1 {
+  color: #F283AF;
   margin-bottom: 30px;
 }
 
@@ -31,35 +52,61 @@ h1 {
 .cell {
   width: 60px;
   height: 60px;
-  border: 2px solid lightgray;
-  background: white;
+  border: 2px solid #F283AF;
+  background: #FBD9E5;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 30px;
   font-weight: bold;
   border-radius: 5px;
+  transition: 
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.15s ease;
+}
+
+.cell.pop {
+  animation: pop 0.15s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
 }
 
 .row.active .cell {
-  border-color: black;
+  box-shadow: 0 0 5px #F283AF;
+}
+
+.row.shake {
+  animation: shake 0.4s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
 }
 
 .correct {
-  background: greenyellow;
-  border-color: greenyellow;
+  background: #F283AF;
+  border-color: #F283AF;
   color: white;
 }
 
 .present {
-  background: yellow;
-  border-color: yellow;
+  background: #fac3d2;
+  border-color: #fac3d2;
   color: white;
 }
 
 .absent {
-  background: grey;
-  border-color: grey;
+  background: #D8CFC4;
+  border-color: #D8CFC4;
   color: white;
 }
 
@@ -67,21 +114,24 @@ h1 {
   margin-top: 20px;
   font-size: 25px;
   height: 30px;
-  color: navy;
+  color: #C43670;
   text-align: center;
+  display: none;
 }
 
 #play-again {
+  background: #F283AF;
+  color: white;
   margin-top: 20px;
   padding: 10px 20px;
   font-family: "VT323", monospace;
   font-size: 20px;
-  border: 2px solid black;
-  background: white;
+  border: none;
   cursor: pointer;
   border-radius: 5px;
+  display: none;
 }
 
 #play-again:hover {
-  background: lightblue;
+  background: #C43670;
 }
